@@ -2,6 +2,31 @@
 # Import modules
 import random
 
+# Create a function called check_guess that checks if the letter is in the word.
+def check_guess(guess):
+    guess = guess.lower()
+
+    # Check if the letter is in the random word.
+    if guess in word:
+        print(f'Good guess! {guess} is in the word.')
+    else:
+        print(f'Sorry, {guess} is not in the word. Try again.')
+
+# Create a function called ask_for_input that will get the user's guess, check if it is a valid guess and call check_guess.
+def ask_for_input():
+    # Create a while loop that asks a user for an input, check if the input is valid.
+    while True:
+        # Get the user input
+        guess = input('Please enter a single letter guess: ')
+
+        # Check if the input meets the valid criteria
+        if len(guess) == 1 and guess.isalpha() == True:
+            break
+        else:
+            print('Invalid letter. Please, enter a single alphabetical character.')
+    
+    check_guess(guess)
+
 # Create the fruit list
 word_list = ['passion fruit', 'strawberry', 'apple', 'banana', 'mango']
 
@@ -9,19 +34,6 @@ word_list = ['passion fruit', 'strawberry', 'apple', 'banana', 'mango']
 word = random.choice(word_list)
 print(word)
 
-# Create a while loop that asks a user for an input, check if the input is valid.
-while True:
-    # Get the user input
-    guess = input('Please enter a single letter guess: ')
+# Call the ask_for_input function to start the process of getting the user input and checking if the letter is in the random word.
+ask_for_input()
 
-    # Check if the input meets the valid criteria
-    if len(guess) == 1 and guess.isalpha() == True:
-        break
-    else:
-        print('Invalid letter. Please, enter a single alphabetical character.')
-
-# Check if the letter is in the random word.
-if guess in word:
-    print(f'Good guess! {guess} is in the word.')
-else:
-    print(f'Sorry, {guess} is not in the word. Try again.')
