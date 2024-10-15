@@ -4,8 +4,8 @@ import random
 
 # Create the Hangman class
 class Hangman:
+    # Initialise the class attributes
     def __init__(self, word_list, num_lives = 5):
-        #attributes
         self.word = random.choice(word_list) # Chosen random word
         self.word_guessed = ['_']*len(self.word) # Letters of the word guessed
         self.num_letters = len(set(self.word)) # Number of unique letters in the word that have not been guessed
@@ -13,6 +13,33 @@ class Hangman:
         self.word_list = word_list # Word list
         self.list_of_guesses = list() # List of guessed characters.
 
-    
+    # Create the check_guess method
+    def check_guess(self, guess):
+        guess = guess.lower()
+
+        # Check if the letter is in the random word.
+        if guess in self.word:
+            print(f'Good guess! {guess} is in the word.')
+        else:
+            print(f'Sorry, {guess} is not in the word. Try again.')
+
+    # Create the ask_for_input method
+    def ask_for_input(self):
+    # Create a while loop that asks a user for an input, check if the input is valid.
+        while True:
+            # Get the user input
+            guess = input('Please guess a letter: ')
+
+            # Check if the input meets the valid criteria
+            if len(guess) != 1 or guess.isalpha() != True:
+                print('Invalid letter. Please, enter a single alphabetical character.')
+            elif guess in self.list_of_guesses:
+                print('You already tried that letter!')
+            else:
+                self.check_guess(guess)
+                self.list_of_guesses.append(guess)
+
+word_list = Hangman(['passion fruit', 'strawberry', 'apple', 'banana', 'mango'])
+Hangman.ask_for_input(word_list)
 
 
