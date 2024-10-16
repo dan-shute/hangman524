@@ -24,6 +24,7 @@ class Hangman:
             for index, letter in enumerate(self.word):
                 if letter == guess:
                     self.word_guessed[index] = guess
+            print(self.word_guessed)
             self.num_letters -= 1
         else:
             self.num_lives -= 1
@@ -45,9 +46,25 @@ class Hangman:
             else:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
+                break
 
-# Creates the Hangman object to pass through for the script to run.
-word_list = Hangman(['passion fruit', 'strawberry', 'apple', 'banana', 'mango'])
-Hangman.ask_for_input(word_list)
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+    
+    while True:
+        if game.num_lives == 0:
+            print('You lost!')
+            break
+        if game.num_letters > 0:
+            game.ask_for_input()
+        if game.num_lives !=0 and game.num_letters <= 0:
+            print('Congratulations. You won the game!')
+            break
+
+
+if __name__ == '__main__':
+    word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon', 'passionfruit','plum']
+    play_game(word_list)
 
 
