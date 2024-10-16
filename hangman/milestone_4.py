@@ -20,6 +20,7 @@ class Hangman:
         # Check if the letter is in the random word.
         if guess in self.word:
             print(f'Good guess! {guess} is in the word.')
+            # Loops over the word, and creates an index. Replaces the blanks in the word_guessed list with the correct letter guessed.
             for index, letter in enumerate(self.word):
                 if letter == guess:
                     self.word_guessed[index] = guess
@@ -45,6 +46,7 @@ class Hangman:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
 
+# Creates the Hangman object to pass through for the script to run.
 word_list = Hangman(['passion fruit', 'strawberry', 'apple', 'banana', 'mango'])
 Hangman.ask_for_input(word_list)
 
