@@ -9,6 +9,10 @@ def check_guess(guess):
     # Check if the letter is in the random word.
     if guess in word:
         print(f'Good guess! {guess} is in the word.')
+        for index, letter in enumerate(word):
+            if letter == guess:
+                word_guessed[index] = guess
+                print(word_guessed)
     else:
         print(f'Sorry, {guess} is not in the word. Try again.')
 
@@ -28,11 +32,13 @@ def ask_for_input():
     check_guess(guess)
 
 # Create the fruit list
-word_list = ['passion fruit', 'strawberry', 'apple', 'banana', 'mango']
+word_list = ['passionfruit', 'strawberry', 'apple', 'banana', 'mango']
 
 # Use the random module to choice a word from the list at random.
 word = random.choice(word_list)
 print(word)
+word_guessed = ['_']*len(word)
+print(word_guessed)
 
 # Call the ask_for_input function to start the process of getting the user input and checking if the letter is in the random word.
 ask_for_input()

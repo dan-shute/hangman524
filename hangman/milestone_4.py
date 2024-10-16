@@ -20,6 +20,10 @@ class Hangman:
         # Check if the letter is in the random word.
         if guess in self.word:
             print(f'Good guess! {guess} is in the word.')
+            for index, letter in enumerate(self.word):
+                if letter == guess:
+                    self.word_guessed[index] = guess
+            self.num_letters -= 1
         else:
             print(f'Sorry, {guess} is not in the word. Try again.')
 
